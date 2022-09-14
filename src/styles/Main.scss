@@ -19,7 +19,17 @@
         color: plum;
       }
     }
-
+    .image-container {
+      margin-inline: auto;
+      width: 600px;
+      height: 600px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      img {
+        width: 100%;
+        color: red;
+      }
+    }
     .button-group {
       margin-bottom: 3rem;
       input {

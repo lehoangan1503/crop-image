@@ -25,17 +25,17 @@ const Main = () => {
         canvas.style.visibility = "visible";
         canvas.width = "400";
         canvas.height = "400";
-        console.log(canvas.width);
+
         ctx.drawImage(
           image,
-          image.width * 0.3,
-          image.height * 0.2,
-          image.width / 2.5,
-          image.height / 2,
+          image.naturalWidth * 0.3,
+          image.naturalHeight * 0.2,
+          image.naturalWidth / 2.5,
+          image.naturalHeight / 2,
           0,
           0,
-          image.width / 2.5,
-          image.height / 2
+          image.naturalWidth / 2.5,
+          image.naturalHeight / 2
         );
 
         setUrlImage("");
@@ -51,6 +51,7 @@ const Main = () => {
     if (name === "Do Another") {
       const canvas = document.getElementById("cropped-canvas-image");
       canvas.style.visibility = "hidden";
+      setUrlImage("");
     }
   };
 
@@ -68,18 +69,20 @@ const Main = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="image-container">
-            {urlImage === "" ? (
-              ""
-            ) : (
+
+          {urlImage === "" ? (
+            ""
+          ) : (
+            <div className="image-container">
               <img
                 crossOrigin="anonymous"
                 src={urlImage}
                 id="cropped-image"
-                alt="invalid url"
+                alt="You was put a wrong link, please try again!"
               ></img>
-            )}
-          </div>
+            </div>
+          )}
+
           <div className="button-group">
             <input
               name="Crop Image"
