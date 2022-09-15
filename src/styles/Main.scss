@@ -19,15 +19,14 @@
         color: plum;
       }
     }
-    .image-container {
+    #image-container {
       margin-inline: auto;
       width: 600px;
-      height: 600px;
+      height: fit-content;
       overflow: hidden;
       margin-bottom: 1rem;
       img {
         width: 100%;
-        color: red;
       }
     }
     .button-group {

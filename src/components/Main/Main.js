@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import "../../styles/Main.scss";
 
@@ -11,6 +12,31 @@ const Main = () => {
     const { value } = e.target;
     setUrlImage(value);
   };
+
+  useEffect(() => {
+    const imageContainer = document.getElementById("image-container");
+    const urlImageInput = document.getElementById("url-image");
+
+    console.log("call");
+    if (imageContainer !== null) {
+      fetch(urlImage)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.toString().length === 26) {
+            urlImageInput.style.backgroundColor = "red";
+            urlImageInput.style.color = "white";
+          } else {
+          }
+        });
+    } else {
+      urlImageInput.style.backgroundColor = "transparent";
+      urlImageInput.style.color = "plum";
+    }
+  }, [urlImage]);
 
   //handle onClick event
   const handleOnClick = (e) => {
@@ -56,7 +82,7 @@ const Main = () => {
   };
 
   return (
-    <div className="Main">
+    <div id="Main" className="Main" style={{ display: "none" }}>
       <div className="main-container">
         <form>
           <div className="input-url-image">
@@ -73,12 +99,12 @@ const Main = () => {
           {urlImage === "" ? (
             ""
           ) : (
-            <div className="image-container">
+            <div id="image-container">
               <img
                 crossOrigin="anonymous"
                 src={urlImage}
                 id="cropped-image"
-                alt="You was put a wrong link, please try again!"
+                alt=""
               ></img>
             </div>
           )}
